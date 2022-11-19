@@ -1,0 +1,23 @@
+
+@font-face{
+    font-family:"CR";
+    src:url("./assets/Font/Roboto/Roboto-Regular.ttf");
+ }
+
+body{
+      color: #25182E;
+      font-family: "CR";
+  }
+
+button{
+    font-family: "CR" ;
+}
+.w-100{
+    width: 100%;
+}
+.m-end-5px{
+    margin-inline-end: 5px;
+}
+.m-end-10px{
+    margin-inline-end: 10px;
+}
