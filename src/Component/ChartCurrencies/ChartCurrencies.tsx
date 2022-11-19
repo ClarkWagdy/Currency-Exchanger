@@ -1,7 +1,14 @@
 import React, {useEffect, useState} from "react";
 import classes from "./ChartCurrencies.module.css";
 import {
-    Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend,
+    CategoryScale,
+    Chart as ChartJS,
+    Legend,
+    LinearScale,
+    LineElement,
+    PointElement,
+    Title,
+    Tooltip,
 } from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import axios from "axios";
@@ -31,33 +38,31 @@ interface props {
 }
 
 const ChartCurrencies: React.FC<props> = (props) => {
-    const [Values, setValues] = useState<Array<number>>( []);
+    const [Values, setValues] = useState<Array<number>>([]);
     const [Load, setLoad] = useState<boolean>(true);
     const data = {
         labels: months, datasets: [{
             label: props.FromData?.label,
-            data: [...Values],
+            data: Values,
             borderColor: 'rgba(255, 255, 255,0.5)',
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
         },],
     };
     useEffect(() => {
-        setLoad(false);
-
+        setLoad(true);
         if(props.FromData && props.ToData) {
-            var Valuesdata:Array<number>=[];
+            let Valuesdata: number[] = [];
             months.forEach((mon, index) => {
-                axios.get(`https://api.currencyapi.com/v3/historical?apikey=vjGjs9bfr8EugG7sNp9EZ9FJ1RZEGKFMQWnbNcdX&currencies=${props.FromData?.label}&base_currency=${props.ToData?.label}&date=${new Date().getFullYear() - 1}-${index + 1}-${new Date(new Date().getFullYear() - 1, index + 1, 0).getDate()}`)
+                axios.get(`https://api.exchangerate.host/${new Date().getFullYear() - 1}-${index + 1}-${new Date(new Date().getFullYear() - 1, index + 1, 0).getDate()}?base=${props.FromData?.label}&symbols=${props.ToData?.label}`)
                         .then((res) => {
-                            let data: any = Object.values(res.data.data)[0];
-                            Valuesdata.push(data.value)
-                            if(index === 11) {
+                            let data: number = Number(Object.values(res.data.rates)[0]);
+                            Valuesdata.push(data);
+                            if(Valuesdata.length === 12) {
                                 setValues(Valuesdata);
                                 setLoad(false);
                             }
                         })
             })
-            console.log(Valuesdata)
         }
     }, [props.FromData, props.ToData])
     return (<>

@@ -93,6 +93,9 @@ const CurrencyExchanger: React.FC<props> = (props) => {
                 Dispatch(setCurrencyConverted(allCurrencyConverted));
                 setLoadingState(false);
                 setResult(result);
+                if(props.Details){
+                    navigate(`/details/${From?.label}-${To?.label}`)
+                }
             }).catch(err => {
                 console.log(err)
             })
@@ -175,7 +178,7 @@ const CurrencyExchanger: React.FC<props> = (props) => {
                                 value={To}
                                 onChange={(e) => {
                                     setResult(0);
-                                    setTo(e)
+                                    setTo(e);
                                 }}
                                 options={Currency} className={classes.selectCU}/>
                     </div>
