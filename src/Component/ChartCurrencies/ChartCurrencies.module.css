@@ -35,7 +35,7 @@
     border-radius: 10px;
     background-color: #871E35;
     /*width: 100%;*/
-
+    min-height: 250px;
     padding: 25px;
     position: relative;
     overflow: hidden;
@@ -73,6 +73,8 @@
     .containChCu {
         width: 90vw;
     }
-
+    .Card{
+        min-height: auto !important;
+    }
 
 }

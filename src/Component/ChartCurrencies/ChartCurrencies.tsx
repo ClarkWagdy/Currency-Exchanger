@@ -70,9 +70,8 @@ const ChartCurrencies: React.FC<props> = (props) => {
             <h2 className={classes.title}>Historical Rates Chart</h2>
             <div className={classes.Card}>
 
-                {Load ? (<div className={classes.Loading}><Loading></Loading></div>) : (<Line options={options}
-                                                                                              height={100}
-                                                                                              data={data}/>)}
+                {Load ? (<div className={classes.Loading}><Loading></Loading></div>)
+                        : (<Line options={options}  height={100}  data={data}/>)}
                 {/*<NoDataYet/>*/}
 
             </div>
