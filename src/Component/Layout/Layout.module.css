@@ -1,0 +1,17 @@
+.Container{
+
+display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 76px);
+    margin: 0;
+padding: 0;
+}
+.content{
+    width: 90vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
