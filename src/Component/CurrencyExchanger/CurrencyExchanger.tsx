@@ -19,7 +19,7 @@ interface props {
 }
 
 const CurrencyExchanger: React.FC<props> = (props) => {
-    const [Amount, setAmount] = useState<string>(""), [Result, setResult] = useState<number>(0), [From, setFrom] = useState<{ value: string, label: string } | null>(props.FromData ? props.FromData : null), [To, setTo] = useState<{ value: string, label: string } | null>(props.ToData ? props.ToData : null), [AmountError, setAmountError] = useState<string>(""), [LoadingState, setLoadingState] = useState<boolean>(false),
+    const [Amount, setAmount] = useState<string>("1"), [Result, setResult] = useState<number>(0), [From, setFrom] = useState<{ value: string, label: string } | null>(props.FromData ? props.FromData : {value: 'Euro', label: 'EUR'}), [To, setTo] = useState<{ value: string, label: string } | null>(props.ToData ? props.ToData : {value: 'United States Dollar', label: 'USD'}), [AmountError, setAmountError] = useState<string>(""), [LoadingState, setLoadingState] = useState<boolean>(false),
             Dispatch = useDispatch(), navigate = useNavigate(),
             CurrencyConverted: Array<CurrencyConverted> | null = useSelector((state: RootState) => state.CurrencyConverted),
             LastAmount: string | null = useSelector((state: RootState) => state.LastAmount), [flag, setflag] = useState<boolean>(false);
@@ -34,6 +34,7 @@ const CurrencyExchanger: React.FC<props> = (props) => {
     useEffect(() => {
         HandleConvert();
     }, [flag])
+
     const HandleAmountChange = (e: string) => {
         if(isNaN(Number(e))) {
             setAmountError("Should only number")
