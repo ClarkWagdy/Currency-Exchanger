@@ -288,10 +288,9 @@
         background-position: 100.1% -5%;
 
     }
-}
-@media (max-width:500px) {
     .DefValuediv50 {
         width: 100%;
         margin: 0 !important;
     }
 }
+ 
