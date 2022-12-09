@@ -86,14 +86,10 @@
 
 .AmountIn::-webkit-outer-spin-button,
 .AmountIn::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+   
     margin: 0;
 }
-
-.AmountIn {
-    -moz-appearance: textfield;
-}
-
+ 
 .AmountIn:active, .AmountIn:focus-visible {
     border-color: rgb(234, 191, 60);
     outline: 2px solid rgb(234, 191, 60);
