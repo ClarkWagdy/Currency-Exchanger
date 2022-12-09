@@ -189,6 +189,7 @@ const CurrencyExchanger: React.FC<props> = (props) => {
             <div className={classes.convert}>
                 <button className={classes.convertBTN} type={"button"}
                         disabled={!(From != null && To !== null && Amount !== "")}
+                        title={"Convert"}
                         onClick={() => HandleConvert()}>{LoadingState ? (<Loading/>) : ("Convert")}</button>
             </div>
             <div className={classes.Result}>
