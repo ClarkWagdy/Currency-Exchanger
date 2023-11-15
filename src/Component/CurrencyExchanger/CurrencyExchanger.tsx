@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {CurrencyConverted, setCurrencyConverted} from "../../Settings/store/MostConverted/MostConvertedSlice";
 import {RootState} from "../../Settings/store/store";
 import {setLastAmount} from "../../Settings/store/LastAmount/LastAmount";
+import { access_key } from '../../Settings/Config/access_key';
 
 interface props {
     Details?: boolean,
@@ -62,7 +63,7 @@ const CurrencyExchanger: React.FC<props> = (props) => {
     const HandleConvert = () => {
         if(From != null && To != null && Amount !== "") {
             setLoadingState(true);
-            axios.get(`https://api.exchangerate.host/convert?from=${From.label}&to=${To.label}`).then(res => {
+            axios.get(`https://api.exchangerate.host/convert?from=${From.label}&to=${To.label}? access_key=${access_key}`).then(res => {
                 let result: number = Number(res.data.result * Number(Amount));
                 let allCurrencyConverted: Array<CurrencyConverted> = CurrencyConverted !== null ? [...CurrencyConverted] : [];
                 let ThisConverted: CurrencyConverted = {
