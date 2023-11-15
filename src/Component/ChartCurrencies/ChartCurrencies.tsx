@@ -54,7 +54,7 @@ const ChartCurrencies: React.FC<props> = (props) => {
         if(props.FromData && props.ToData) {
             let Valuesdata: number[] = [];
             months.forEach((mon, index) => {
-                axios.get(`https://api.exchangerate.host/${new Date().getFullYear() - 1}-${index + 1}-${new Date(new Date().getFullYear() - 1, index + 1, 0).getDate()}?base=${props.FromData?.label}&symbols=${props.ToData?.label}? access_key=${access_key}`)
+                axios.get(`https://api.exchangerate.host/${new Date().getFullYear() - 1}-${index + 1}-${new Date(new Date().getFullYear() - 1, index + 1, 0).getDate()}?base=${props.FromData?.label}&symbols=${props.ToData?.label}&access_key=${access_key}`)
                         .then((res) => {
                             let data: number = Number(Object.values(res.data.rates)[0]);
                             Valuesdata.push(data);
