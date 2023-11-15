@@ -64,7 +64,7 @@ const CurrencyExchanger: React.FC<props> = (props) => {
         if(From != null && To != null && Amount !== "") {
             setLoadingState(true);
             axios.get(`https://api.currencybeacon.com/v1/convert?from=${From.label}&amount=${Amount}&to=${To.label}&api_key=${access_key}`).then(res => {
-                let result: number = Number(res.data.result * Number(Amount));
+                let result: number = res.data.value;
                 let allCurrencyConverted: Array<CurrencyConverted> = CurrencyConverted !== null ? [...CurrencyConverted] : [];
                 let ThisConverted: CurrencyConverted = {
                     Id: allCurrencyConverted.length,
